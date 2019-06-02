@@ -1,0 +1,93 @@
+//Mr Jesse Byers
+//3162857
+//SENG1120 - Assignment 3
+//BTNode.template
+
+
+#include <cstdlib> //NULL
+#include <iostream>
+#include "BTNode.h"
+
+using namespace std;
+
+//CONSTRUCTOR
+template <typename data_type>
+BTNode<data_type>::BTNode(const data_type& initdata){ //node with data
+
+	data = initdata;
+	right = NULL;
+	left = NULL;
+	parent = NULL;
+}
+template <typename data_type>
+BTNode<data_type>::BTNode(){ //empty node
+	data = data_type();
+	right = NULL;
+	left = NULL;
+	parent = NULL;
+
+}
+
+//DESTRUCTOR
+template <typename data_type>
+BTNode<data_type>::~BTNode(){ //set all to NULL
+	
+	right = NULL;
+	left = NULL;
+	parent = NULL;
+
+}
+
+//GETS
+template <typename data_type>
+data_type BTNode<data_type>::getData() const{ 
+	return data;
+}
+
+template <typename data_type>
+data_type& BTNode<data_type>::getData(){ 
+	return data;
+}
+
+
+template <typename data_type>
+BTNode<data_type>* BTNode<data_type>::getRight() const{
+	return right;
+}
+
+
+template <typename data_type>
+BTNode<data_type>* BTNode<data_type>::getLeft() const{
+	return left;
+}
+
+template <typename data_type>
+BTNode<data_type>* BTNode<data_type>::getParent() const{
+	return parent;
+}
+
+
+
+//SETS
+template <typename data_type>
+void BTNode<data_type>::setData(const data_type& newData){
+	data = newData;
+}
+
+
+template <typename data_type>
+void BTNode<data_type>::setRight(BTNode* rightChild){
+	right = rightChild;
+}
+
+template <typename data_type>
+void BTNode<data_type>::setParent(BTNode* parentnode){
+	parent = parentnode;
+}
+
+
+
+template <typename data_type>
+void BTNode<data_type>::setLeft(BTNode* leftChild){
+	left = leftChild;
+}

@@ -1,0 +1,142 @@
+//Mr Jesse Byers
+//3162857
+//SENG1120 - Assignment 3
+//HTable.template
+
+
+#include <cstdlib> //NULL
+#include <iostream>
+#include "HTable.h"
+#include <sstream> 
+
+using namespace std;
+
+
+
+template <typename data_type>
+ostream& operator << (ostream& outs, HTable<data_type>& tableValues) 
+{
+
+	outs << "\n";
+	outs << tableValues.print();
+	outs << "\n";
+
+	return outs;
+	
+}
+
+
+//CONSTRUCTOR
+template <typename data_type>
+HTable<data_type>::HTable(const data_type& initdata){ //table with data
+
+	hashArray[0] = initdata;
+	size = 1;
+
+}
+
+template <typename data_type>
+HTable<data_type>::HTable(){ //empty table
+	
+	
+	hashArray[0] = 0;
+	size = 0;
+	
+
+}
+
+//DESTRUCTOR
+	template <typename data_type>
+HTable<data_type>::~HTable(){
+	
+	//delete hashArray;
+	size = 0;
+
+}
+
+template <typename data_type>
+string HTable<data_type>::print(){
+
+	string str = "";
+
+	for(int i = 0; i <= size; i++){
+
+		if (hashArray[i] != 0){
+
+			//convert int to string for printing
+			int numberconvert = hashArray[i];     
+
+			string numberstring;     
+
+			ostringstream convertint;  
+
+			convertint << numberconvert;      
+
+			numberstring = convertint.str();
+
+			str += numberstring + "\n";
+
+		}
+
+	}
+
+	return str;
+
+}
+
+template <typename data_type>
+int HTable<data_type>::hashfun(int value){ //return value to put into the array
+
+	return value%150;
+}
+
+template <typename data_type>
+void HTable<data_type>::add(const data_type& addval){ //adds the the array in the specified hash value
+
+	hashArray[hashfun(size)] = addval;
+
+	//cout << hashfun(size) << endl; //for testing to see hash function value/position
+
+	size++;
+
+
+}
+
+
+template <typename data_type>
+void HTable<data_type>::remove(const data_type& removeval){ //iterate through table and remove any of the matching values
+
+	for(int i = 0; i <= size; i++){
+
+		if (hashArray[i] == removeval){
+
+			hashArray[i] = 0;
+
+		} 
+
+	}
+
+	
+}
+
+template <typename data_type>
+bool HTable<data_type>::search(data_type& searchval){ // iterate through tree and return boolean value if found
+
+
+	for(int i = 0; i <= size; i++){
+
+
+		if (hashArray[i] == searchval){
+
+			return true;
+
+		} else {
+
+			return false;
+		}
+
+	}
+
+}
+
+

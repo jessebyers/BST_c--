@@ -1,6 +1,4 @@
-//Mr Jesse Byers
-//3162857
-//SENG1120 - Assignment 3
+
 //BSTree.h
 
 
